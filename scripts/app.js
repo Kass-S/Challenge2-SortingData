@@ -1,24 +1,29 @@
 import { FetchJson } from "./fetch.js";
 
-let idBtn = document.getElementById("idBtn");
+let idSortBtn = document.getElementById("idSortBtn");
+let firstNameSortBtn = document.getElementById("firstNameSortBtn");
+let lastNameSortBtn = document.getElementById("lastNameSortBtn");
+let heightSortBtn = document.getElementById("heightSortBtn");
+let ageSortBtn = document.getElementById("ageSortBtn");
 
 let tableBodyText = document.getElementById("tableBodyText");
-let b = 10
-let k = 9
 
-const SortById = async () => {
+
+const ShowTable = async () => {
     let data = await FetchJson();
 
     let trContainer = document.createElement('tr');
 
-    trContainer.innerHTML = `<th scope="row" class="px-6 py-4"> ${data[0].Id} </th> <td class="px-6 py-4"> ${data[0].FirstName} </td> <td class="px-6 py-4"> ${data[0].LastName} </td> <td class="px-6 py-4"> ${data[0].Height} </td> <td class="px-6 py-4"> ${data[0].Age} </td>` 
-    trContainer.className = 'bg-white dark:bg-gray-800';
-
-    tableBodyText.appendChild(trContainer);
-
+    data.forEach(person => {
+        trContainer.innerHTML = `<th scope="row" class="px-6 py-4"> ${person.Id} </th> <td class="px-6 py-4"> ${person.FirstName} </td> <td class="px-6 py-4"> ${person.LastName} </td> <td class="px-6 py-4"> ${person.Height} </td> <td class="px-6 py-4"> ${person.Age} </td>` 
+        trContainer.className = 'bg-white dark:bg-gray-800';
+    
+        tableBodyText.appendChild(trContainer);
+    });
+   
 }
 
 
-idBtn.addEventListener('click', () => {
-    SortById();
+idSortBtn.addEventListener('click', () => {
+    ShowTable();
 })

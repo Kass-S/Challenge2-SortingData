@@ -524,6 +524,9 @@
   .relative {
     position: relative;
   }
+  .m-5 {
+    margin: calc(var(--spacing) * 5);
+  }
   .block {
     display: block;
   }
