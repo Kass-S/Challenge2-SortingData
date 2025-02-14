@@ -38,7 +38,6 @@ const SortById = async () => {
     for (let i = 0; i < data.length; i++){
         groupArr[Math.floor(i / amountShown)].push(data[i]);
     }
-    console.log(groupArr[0])
  
     groupArr[page].forEach(person => {
 
@@ -80,6 +79,8 @@ prevBtn.addEventListener('click', () => {
 const IdDescending = async () => {
     let data = await FetchJson();
 
+    let descendingArr = [];
+
     data.sort((a, b) => {
         if(a.Id > b.Id){
             return -1;
@@ -90,7 +91,16 @@ const IdDescending = async () => {
         }
     });
 
-    data.forEach(person => { 
+    for(let i = 0; i <= Math.ceil(data.length / amountShown); i++){
+        descendingArr[i] = [];
+    }
+
+    for (let i = 0; i < data.length; i++){
+        descendingArr[Math.floor(i / amountShown)].push(data[i]);
+    }
+    console.log(descendingArr[0])
+
+    descendingArr[0].forEach(person => { 
         let trContainer = document.createElement('tr');
         
         trContainer.innerHTML = `<th scope="row" class="px-6 py-4"> ${person.Id} </th> <td class="px-6 py-4"> ${person.FirstName} </td> <td class="px-6 py-4"> ${person.LastName} </td> <td class="px-6 py-4"> ${person.Height} </td> <td class="px-6 py-4"> ${person.Age} </td>` 
