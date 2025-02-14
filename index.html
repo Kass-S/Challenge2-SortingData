@@ -9,10 +9,12 @@
   </head>
 
   <body class="bg-gray-400">
+
+    <!-- <button id="ascendingBtn" class="m-5 p-2 bg-gray-900 text-gray-200 rounded-lg hover:cursor-pointer hover:bg-gray-300 hover:text-gray-900">10</button> -->
     
-    <div class="relative m-5 mt-10 ">
+    <div class="relative m-20">
       <!-- pagination currently does not work -->
-      <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
+      <!-- <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4 my-2" aria-label="Table navigation">
         <span class="text-sm font-normal text-gray-900 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing 
         <span class="font-semibold text-white">1-10</span> of 
         <span class="font-semibold text-white">100</span>
@@ -40,25 +42,55 @@
         <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
             </li>
         </ul>
-      </nav>
+      </nav> -->
 
+      <!-- using rounded on any part of the table is not working -->
       <table class="w-full text-sm text-left rtl:text-right text-gray-400 ">
-        <thead class="text-xs text-gray-900 uppercase bg-blue-100">
+        <thead class="text-xs text-gray-900 uppercase bg-blue-100 rounded-lg">
           <tr>
-            <th id="idSortBtn" scope="col" class="px-6 py-3 hover:cursor-pointer">
-              <button>Id</button>
+            <th id="idSortBtn" scope="col" class="px-6 py-3 hover:cursor-pointer hover:bg-blue-200">
+              <div class="flex justify-between"> 
+                <button>Id</button>
+                <svg id="idToggleOrder" class="w-3 h-4 text-gray-800" aria-hidden="true" fill="none" viewBox="0 0 16 10">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1.707 2.707 5.586 5.586a1 1 0 0 0 1.414 0l5.586-5.586A1 1 0 0 0 13.586 1H2.414a1 1 0 0 0-.707 1.707Z"/>
+                </svg>
+              </div>
             </th>
-            <th id="firstNameSortBtn" scope="col" class="px-6 py-3 hover:cursor-pointer">
-              <button>First Name</button>
+
+            <th id="firstNameSortBtn" scope="col" class="px-6 py-3 hover:cursor-pointer hover:bg-blue-200 ">
+              <div class="flex justify-between">
+                <button>First Name</button>
+                <svg id="firstNameToggleOrder" class="w-3 h-4 text-gray-800" aria-hidden="true" fill="none" viewBox="0 0 16 10">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1.707 2.707 5.586 5.586a1 1 0 0 0 1.414 0l5.586-5.586A1 1 0 0 0 13.586 1H2.414a1 1 0 0 0-.707 1.707Z"/>
+                </svg>
+              </div>
             </th>
-            <th id="lastNameSortBtn" scope="col" class="px-6 py-3 hover:cursor-pointer">
-              <button>Last Name</button>
+
+            <th id="lastNameSortBtn" scope="col" class="px-6 py-3 hover:cursor-pointer hover:bg-blue-200">
+              <div class="flex justify-between">
+                <button>Last Name</button>
+                <svg id="lastNameToggleOrder" class="w-3 h-4 text-gray-800" aria-hidden="true" fill="none" viewBox="0 0 16 10">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1.707 2.707 5.586 5.586a1 1 0 0 0 1.414 0l5.586-5.586A1 1 0 0 0 13.586 1H2.414a1 1 0 0 0-.707 1.707Z"/>
+                </svg>
+              </div>
             </th>
-            <th id="heightSortBtn" scope="col" class="px-6 py-3 hover:cursor-pointer">
-              <button>Height</button>
+
+            <th id="heightSortBtn" scope="col" class="px-6 py-3 hover:cursor-pointer hover:bg-blue-200">
+              <div class="flex justify-between">
+                <button>Height</button>
+                <svg id="heightToggleOrder" class="w-3 h-4 text-gray-800" aria-hidden="true" fill="none" viewBox="0 0 16 10">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1.707 2.707 5.586 5.586a1 1 0 0 0 1.414 0l5.586-5.586A1 1 0 0 0 13.586 1H2.414a1 1 0 0 0-.707 1.707Z"/>
+                </svg>
+              </div>  
             </th>
-            <th id="ageSortBtn" scope="col" class="px-6 py-3 hover:cursor-pointer">
-              <button>Age</button>
+
+            <th id="ageSortBtn" scope="col" class="px-6 py-3 hover:cursor-pointer hover:bg-blue-200">
+              <div class="flex justify-between">
+                <button>Age</button>
+                <svg id="ageToggleOrder" class="w-3 h-4 text-gray-800" aria-hidden="true" fill="none" viewBox="0 0 16 10">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1.707 2.707 5.586 5.586a1 1 0 0 0 1.414 0l5.586-5.586A1 1 0 0 0 13.586 1H2.414a1 1 0 0 0-.707 1.707Z"/>
+                </svg>
+              </div>
             </th>
           </tr>
         </thead>
