@@ -12,31 +12,70 @@ let lastNameToggleOrder = document.getElementById('lastNameToggleOrder');
 let heightToggleOrder = document.getElementById('heightToggleOrder');
 let ageToggleOrder = document.getElementById('ageToggleOrder');
 
+let tenBtn = document.getElementById('tenBtn');
+let twentyBtn = document.getElementById('twentyBtn');
+let thirtyBtn = document.getElementById('thirtyBtn');
+let fourtyBtn = document.getElementById('fourtyBtn');
+let fiftyBtn = document.getElementById('fiftyBtn');
+
+let prevBtn = document.getElementById('prevBtn');
+let nextBtn = document.getElementById('nextBtn');
+
 let tableBodyText = document.getElementById("tableBodyText");
 
-// let counter = 0;
-// let amountShown = 9;
+let amountShown = 10;
+let page = 0;
 
 const SortById = async () => {
     let data = await FetchJson();
-    //counter = 0;
+
+    let groupArr = [];
+
+    for(let i = 0; i <= Math.ceil(data.length / amountShown); i++){
+        groupArr[i] = [];
+    }
+
+    for (let i = 0; i < data.length; i++){
+        groupArr[Math.floor(i / amountShown)].push(data[i]);
+    }
+    console.log(groupArr[0])
  
-    data.forEach(person => {
+    groupArr[page].forEach(person => {
 
-        //this if staement doesnt work on the ones that need sorting. which is the all the rest of the functions
-        //if(counter <= amountShown){
-            let trContainer = document.createElement('tr');
+        let trContainer = document.createElement('tr');
 
-            trContainer.innerHTML = `<th scope="row" class="px-6 py-4"> ${person.Id} </th> <td class="px-6 py-4"> ${person.FirstName} </td> <td class="px-6 py-4"> ${person.LastName} </td> <td class="px-6 py-4"> ${person.Height} </td> <td class="px-6 py-4"> ${person.Age} </td>` 
-            trContainer.className = 'bg-white dark:bg-gray-800';
+        trContainer.innerHTML = `<th scope="row" class="px-6 py-4"> ${person.Id} </th> <td class="px-6 py-4"> ${person.FirstName} </td> <td class="px-6 py-4"> ${person.LastName} </td> <td class="px-6 py-4"> ${person.Height} </td> <td class="px-6 py-4"> ${person.Age} </td>` 
+        trContainer.className = 'bg-white dark:bg-gray-800';
     
-            tableBodyText.appendChild(trContainer);
-            //counter++;    
-        //}
+        tableBodyText.appendChild(trContainer);
         
     });   
 }
 SortById();
+
+nextBtn.addEventListener('click', () => {
+    if(page < amountShown){
+        tableBodyText.innerHTML = '';
+        page++;
+        SortById();
+    }else{
+        tableBodyText.innerHTML = '';
+        page = 0;
+        SortById();
+    }
+})
+
+prevBtn.addEventListener('click', () => {
+    if(page > 0){
+        tableBodyText.innerHTML = '';
+        page--;
+        SortById();
+    }else{
+        tableBodyText.innerHTML = '';
+        page = 0;
+        SortById();
+    }
+} )
 
 const IdDescending = async () => {
     let data = await FetchJson();
@@ -296,3 +335,24 @@ ageToggleOrder.addEventListener('click', () => {
     tableBodyText.innerHTML = '';
     AgeDescending();
 })
+
+
+// tenBtn.addEventListener('click', () => {
+//     amountShown = 10;
+// })
+
+// twentyBtn.addEventListener('click', () => {
+//     amountShown = 5;
+// })
+
+// thirtyBtn.addEventListener('click', () => {
+//     amountShown = 4;
+// })
+
+// fourtyBtn.addEventListener('click', () => {
+//     amountShown = 3;
+// })
+
+// fiftyBtn.addEventListener('click', () => {
+//     amountShown = 2;
+// })
